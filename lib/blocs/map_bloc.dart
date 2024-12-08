@@ -25,6 +25,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
         emit(MapLoaded({
           'center': [-6.1751, 106.8272],
           'zoom': 15.0,
+          'polylineCoordinates': polylineCoordinates,
         }));
       } catch (e) {
         emit(MapError(e.toString()));
@@ -41,8 +42,7 @@ class MapBloc extends Bloc<MapEvent, MapState> {
     });
 
     on<SelectSearchResultEvent>((event, emit) {
-      emit(MapCentered(LatLng(event.latitude,
-          event.longitude)));
+      emit(MapCentered(LatLng(event.latitude, event.longitude)));
     });
 
     on<DrawPolylineEvent>((event, emit) async {
