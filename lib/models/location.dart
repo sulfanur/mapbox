@@ -17,9 +17,4 @@ class Location {
       longitude: coordinates[0],
     );
   }
-
-  @override
-  String toString() {
-    return "$name ($latitude, $longitude)";
-  }
 }

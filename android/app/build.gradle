@@ -42,6 +42,3 @@ android {
 flutter {
     source = "../.."
 }
-dependencies {
-    implementation 'com.mapbox.mapboxsdk:mapbox-android-sdk:9.6.1'
-}

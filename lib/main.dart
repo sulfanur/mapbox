@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'blocs/map_bloc.dart';
-import 'screens/home_page.dart';
-
-// Token Mapbox langsung ditulis di sini
-const String mapboxAccessToken = "pk.eyJ1Ijoia2FybG9kZXYiLCJhIjoiY2xocTN1ZnVjMjB1NDNtcHNoMmI2N2dhcCJ9.5Y8fh8aPfM6f5zDKA_bDiw"; // Gantilah dengan token Mapbox Anda
+import 'repositories/map_repository.dart';
+import 'screens/map_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,13 +13,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_) => MapBloc()),  // Membuat instance MapBloc
-      ],
-      child: const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: HomePage(),
+    return MaterialApp(
+      title: 'Mapbox Integration',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      debugShowCheckedModeBanner: false,
+      home: BlocProvider(
+        create: (context) => MapBloc(MapRepository()),
+        child: MapScreen(),
       ),
     );
   }
